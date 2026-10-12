@@ -5,7 +5,6 @@ import com.cinevault.repository.MovieRepository;
 import java.util.List;
 import com.cinevault.entity.Movie;
 import java.util.Optional;
-import com.cinevault.dto.CreateMovieRequest;
 import com.cinevault.dto.TmdbMovieResponse;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
@@ -27,16 +26,6 @@ public class MovieService {
 
     public Optional<Movie> getMovieById(Integer id) {
         return movieRepository.findById(id);
-    }
-
-    public Movie createMovie(CreateMovieRequest request) {
-        Movie movie = new Movie();
-        movie.setTitle(request.title());
-        movie.setOriginalTitle(request.originalTitle());
-        movie.setOverview(request.overview());
-        movie.setReleaseDate(request.releaseDate());
-        movie.setRuntimeMinutes(request.runtimeMinutes());
-        return movieRepository.save(movie);
     }
 
     public Movie importMovieFromTmdb(Integer tmdbId) {

@@ -8,20 +8,15 @@ import com.cinevault.service.TmdbService;
 import com.cinevault.dto.TmdbSearchResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.cinevault.dto.TmdbMovieResponse;
-import com.cinevault.entity.Movie;
-import org.springframework.web.bind.annotation.PostMapping;
-import com.cinevault.service.MovieService;
 
 @RestController
 @RequestMapping ("/api/tmdb")
 public class TmdbController {
     
     private final TmdbService tmdbService;
-    private final MovieService movieService;
 
-    public TmdbController(TmdbService tmdbService, MovieService movieService) {
+    public TmdbController(TmdbService tmdbService) {
         this.tmdbService = tmdbService;
-        this.movieService = movieService;
     }
 
     @GetMapping ("/search")
@@ -34,8 +29,4 @@ public class TmdbController {
         return tmdbService.getMovieById(id);
     }
 
-    @PostMapping("/import/{tmdbId}")
-    public Movie importMovieFromTmdb(@PathVariable Integer tmdbId) {
-        return movieService.importMovieFromTmdb(tmdbId);
-    }
 }

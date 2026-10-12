@@ -7,8 +7,8 @@ import com.cinevault.service.MovieService;
 import com.cinevault.entity.Movie;
 import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.ResponseEntity;
-
 
 @RestController
 @RequestMapping("/api/movies")
@@ -30,4 +30,10 @@ public class MovieController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PostMapping("/import/{tmdbId}")
+    public Movie importMovieFromTmdb(@PathVariable Integer tmdbId) {
+        return movieService.importMovieFromTmdb(tmdbId);
+    }
+
 }
