@@ -2,6 +2,7 @@ package com.cinevault.dto;
 
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 public record TmdbMovieResponse(
 
@@ -19,7 +20,9 @@ public record TmdbMovieResponse(
     LocalDate releaseDate,
 
     @JsonProperty ("runtime")
-    Integer runtimeMinutes
+    Integer runtimeMinutes,
+
+    List<TmdbGenreResponse> genres
 
 ) {
     
