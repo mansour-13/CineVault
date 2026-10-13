@@ -3,6 +3,8 @@ package com.cinevault.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+
+import com.cinevault.dto.TmdbCreditResponse;
 import com.cinevault.dto.TmdbMovieResponse;
 import com.cinevault.dto.TmdbSearchResponse;
 
@@ -40,5 +42,16 @@ public class TmdbService {
                         .build())
                 .retrieve()
                 .body(TmdbSearchResponse.class);
+    }
+
+    public TmdbCreditResponse getMovieCredits(Integer id) {
+        return restClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/movie/{id}/credits")
+                        .queryParam("api_key", apiKey)
+                        .queryParam("language", "en-US")
+                        .build(id))
+                .retrieve()
+                .body(TmdbCreditResponse.class);
     }
 }

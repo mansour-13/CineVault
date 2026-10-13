@@ -8,6 +8,7 @@ import com.cinevault.service.TmdbService;
 import com.cinevault.dto.TmdbSearchResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.cinevault.dto.TmdbMovieResponse;
+import com.cinevault.dto.TmdbCreditResponse;
 
 @RestController
 @RequestMapping ("/api/tmdb")
@@ -27,6 +28,11 @@ public class TmdbController {
     @GetMapping ("/movies/{id}")
     public TmdbMovieResponse getMovieById(@PathVariable Integer id) {
         return tmdbService.getMovieById(id);
+    }
+
+    @GetMapping ("/movies/{id}/credits")
+    public TmdbCreditResponse getMovieCredits(@PathVariable Integer id) {
+        return tmdbService.getMovieCredits(id);
     }
 
 }
