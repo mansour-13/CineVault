@@ -23,7 +23,7 @@ public class Person {
     @Column (name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @Column (length = 255)
+    @Column (name = "place_of_birth", length = 255)
     private String placeOfBirth;
     
     @Column (columnDefinition = "TEXT")

@@ -19,6 +19,7 @@ public class MovieController {
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
+    
     @GetMapping
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();

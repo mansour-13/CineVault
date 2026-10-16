@@ -6,6 +6,7 @@ import org.springframework.web.client.RestClient;
 
 import com.cinevault.dto.TmdbCreditResponse;
 import com.cinevault.dto.TmdbMovieResponse;
+import com.cinevault.dto.TmdbPersonResponse;
 import com.cinevault.dto.TmdbSearchResponse;
 
 @Service 
@@ -53,5 +54,16 @@ public class TmdbService {
                         .build(id))
                 .retrieve()
                 .body(TmdbCreditResponse.class);
+    }
+
+    public TmdbPersonResponse getPersonById(Integer id) {
+        return restClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/person/{id}")
+                        .queryParam("api_key", apiKey)
+                        .queryParam("language", "en-US")
+                        .build(id))
+                .retrieve()
+                .body(TmdbPersonResponse.class);
     }
 }
