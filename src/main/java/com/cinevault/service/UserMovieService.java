@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cinevault.dto.UserMovieRequest;
+import com.cinevault.dto.UserMovieResponse;
 import com.cinevault.entity.Movie;
 import com.cinevault.entity.UserMovie;
 import com.cinevault.repository.AppUserRepository;
@@ -35,7 +36,7 @@ public class UserMovieService {
     }
 
     @Transactional 
-    public UserMovie importUserMovie (UserMovieRequest request) {
+    public UserMovieResponse importUserMovie (UserMovieRequest request) {
 
         Integer userId = 1;
         String externalId = request.tmdbId().toString();
@@ -67,7 +68,15 @@ public class UserMovieService {
         userMovieRepository.save(userMovie);
         entityManager.flush();
         entityManager.refresh(userMovie);
-        return userMovie;
+        return new UserMovieResponse(
+            userMovie.getId(),
+            userMovie.getMovie().getId(),
+            userMovie.getStatus(),
+            userMovie.getPriority(),
+            userMovie.getPersonalRating(),
+            userMovie.getPersonalReview(),
+            userMovie.getAddedAt()
+        );
     }
     
 }
