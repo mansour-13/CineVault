@@ -1,7 +1,6 @@
 package com.cinevault.service;
 
 import com.cinevault.repository.MovieCreditRepository;
-import com.cinevault.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 import com.cinevault.repository.MovieRepository;
 import java.util.List;
@@ -29,7 +28,7 @@ import jakarta.transaction.Transactional;
 public class MovieService {
     
     private final MovieCreditRepository movieCreditRepository;
-      private final MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
     private final TmdbService tmdbService;
     private final GenreRepository genreRepository;
     private final EntityManager entityManager;
