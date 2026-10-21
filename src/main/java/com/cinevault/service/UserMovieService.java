@@ -1,5 +1,6 @@
 package com.cinevault.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -79,4 +80,20 @@ public class UserMovieService {
         );
     }
     
+    public List<UserMovieResponse> getUserMovieByUserId(Integer userId) {
+
+        List<UserMovie> userMovies =  userMovieRepository.findByAppUser_Id(userId);
+
+    return userMovies.stream()
+        .map(userMovie -> new UserMovieResponse(
+            userMovie.getId(),
+            userMovie.getMovie().getId(),
+            userMovie.getStatus(),
+            userMovie.getPriority(),
+            userMovie.getPersonalRating(),
+            userMovie.getPersonalReview(),
+            userMovie.getAddedAt()
+        ))
+        .toList();
+    }
 }
