@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/page/movies_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,9 +14,13 @@ class HomePage extends StatelessWidget {
             leading: Icon(Icons.movie),
             title: Text('My Movie'),
             trailing: Icon(Icons.chevron_right),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MoviesPage()),
+              );
+            },
           ),
-          Text('My Movies'),
           Text('TV Series'),
           Text('Add Movie'),
           Text('Statistics'),

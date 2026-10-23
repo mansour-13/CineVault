@@ -72,6 +72,7 @@ public class UserMovieService {
         return new UserMovieResponse(
             userMovie.getId(),
             userMovie.getMovie().getId(),
+            userMovie.getMovie().getTitle(),
             userMovie.getStatus(),
             userMovie.getPriority(),
             userMovie.getPersonalRating(),
@@ -88,6 +89,7 @@ public class UserMovieService {
         .map(userMovie -> new UserMovieResponse(
             userMovie.getId(),
             userMovie.getMovie().getId(),
+            userMovie.getMovie().getTitle(),
             userMovie.getStatus(),
             userMovie.getPriority(),
             userMovie.getPersonalRating(),
