@@ -13,4 +13,12 @@ class MovieApiService {
       throw Exception('Faild to load movies');
     }
   }
+
+  Future<http.Response> searchMovie(String title) async {
+    final uri = Uri.http('localhost:8080', '/api/tmdb/search', {
+      'title': title,
+    });
+    final response = await http.get(uri);
+    return response;
+  }
 }

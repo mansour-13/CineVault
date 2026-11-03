@@ -1,5 +1,6 @@
 package com.cinevault.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import com.cinevault.dto.TmdbCreditResponse;
 
 @RestController
 @RequestMapping ("/api/tmdb")
+@CrossOrigin(originPatterns = "http://localhost:*")
 public class TmdbController {
     
     private final TmdbService tmdbService;

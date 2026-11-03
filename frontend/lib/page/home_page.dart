@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
         children: [
           ListTile(
             leading: Icon(Icons.movie),
-            title: Text('My Movie'),
+            title: Text('My Movies'),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
               Navigator.push(
