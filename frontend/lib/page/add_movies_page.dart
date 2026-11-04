@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/page/movie_details_page.dart';
 import 'package:frontend/service/movie_api_service.dart';
 
 class AddMoviesPage extends StatefulWidget {
@@ -66,10 +67,20 @@ class _AddMoviesPageState extends State<AddMoviesPage> {
                 itemCount: searchResults.length,
                 itemBuilder: (context, index) {
                   final movie = searchResults[index];
-
                   return ListTile(
                     title: Text(movie['title']),
                     subtitle: Text(movie['release_date'] ?? 'Unknown date'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailsPage(
+                            movieId: movie['id'],
+                            movieTitle: movie['title'],
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
