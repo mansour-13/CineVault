@@ -21,4 +21,10 @@ class MovieApiService {
     final response = await http.get(uri);
     return response;
   }
+
+  Future<http.Response> getMovieById(int id) async {
+    final uri = Uri.http('localhost:8080', '/api/tmdb/movies/$id');
+    final response = await http.get(uri);
+    return response;
+  }
 }
